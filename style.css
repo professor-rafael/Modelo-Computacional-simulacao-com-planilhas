@@ -1,3 +1,4 @@
+/* ===== VARIÁVEIS ROOT ===== */
 :root {
     --primary: #00f7ff;
     --secondary: #8b00ff;
@@ -32,6 +33,7 @@ body {
     overflow-x: auto;
 }
 
+/* ===== CONTAINER PRINCIPAL ===== */
 .cyber-container {
     position: relative;
     max-width: 100%;
@@ -44,6 +46,7 @@ body {
     border-radius: 5px;
 }
 
+/* ===== CABEÇALHO ===== */
 .cyber-header {
     background: linear-gradient(90deg, var(--bg-darker), var(--secondary), var(--bg-darker));
     padding: 15px 20px;
@@ -79,6 +82,7 @@ body {
     animation: scanline 3s linear infinite;
 }
 
+/* ===== TOOLBAR ===== */
 .toolbar {
     display: flex;
     padding: 15px;
@@ -143,6 +147,7 @@ body {
     color: var(--primary);
 }
 
+/* ===== PLANILHA ===== */
 .spreadsheet {
     width: 100%;
     border-collapse: collapse;
@@ -195,6 +200,7 @@ body {
     text-align: center;
 }
 
+/* ===== STATUS ===== */
 .status-high {
     color: var(--success);
     font-weight: bold;
@@ -255,6 +261,7 @@ body {
     box-shadow: 0 0 8px var(--danger);
 }
 
+/* ===== EFEITO GLITCH ===== */
 .glitch-effect {
     position: relative;
 }
@@ -285,6 +292,7 @@ body {
     100% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); }
 }
 
+/* ===== RODAPÉ ===== */
 .cyber-footer {
     padding: 15px 20px;
     border-top: 1px solid var(--primary);
@@ -324,7 +332,7 @@ body {
     letter-spacing: 1.5px;
 }
 
-/* Efeitos de brilho */
+/* ===== EFEITO SHINE ===== */
 .shine-effect {
     position: relative;
     overflow: hidden;
@@ -348,7 +356,7 @@ body {
     100% { left: 100%; }
 }
 
-/* Barra de rolagem personalizada */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
     height: 8px;
     width: 8px;
@@ -367,7 +375,97 @@ body {
     background: var(--secondary);
 }
 
-/* Responsividade */
+/* ===== BARRA LATERAL VERTICAL DE ÍCONES ===== */
+.social-sidebar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(5, 5, 5, 0.85);
+    border: 1px solid var(--primary);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    padding: 10px 8px;
+    box-shadow: -2px 0 15px rgba(0, 247, 255, 0.3),
+                -2px 0 30px rgba(139, 0, 255, 0.15);
+    backdrop-filter: blur(6px);
+}
+
+.social-sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    color: var(--primary);
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.social-sidebar a:hover {
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary),
+                inset 0 0 10px rgba(0, 247, 255, 0.2);
+    transform: scale(1.08);
+}
+
+.social-sidebar a.whatsapp:hover {
+    color: #25D366;
+    border-color: #25D366;
+    box-shadow: 0 0 15px #25D366,
+                inset 0 0 10px rgba(37, 211, 102, 0.2);
+}
+
+.social-sidebar a.github:hover {
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 15px #fff,
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.social-sidebar a::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 55px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background: var(--bg-darker);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+}
+
+.social-sidebar a:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.social-sidebar .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 4px 0;
+    opacity: 0.5;
+}
+
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
     .cyber-header h1 {
         font-size: 1.4rem;
@@ -395,5 +493,20 @@ body {
     .footer-info {
         flex-direction: column;
         gap: 5px;
+    }
+
+    .social-sidebar {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+        transform: none;
+        flex-direction: row;
+        border-radius: 8px;
+        border-right: 1px solid var(--primary);
+        padding: 6px 10px;
+    }
+
+    .social-sidebar a::before {
+        display: none;
     }
 }
